@@ -18,7 +18,3 @@ mock:
     - body: ""
       intent: put
       id: myId
-    - body: String
-      intent: [put, get, list]
-      id: String
-      buffer: false

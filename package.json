@@ -7,7 +7,7 @@
     "start": "npm run build && node index",
     "test": "tsc --watch > log & tx-test --path dist"
   },
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "@tenex/schema-validate": "^1.2.1",
     "@types/js-yaml": "^3.12.1",

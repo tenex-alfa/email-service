@@ -4,11 +4,10 @@ import getFile from "./lib/get-file";
 import uploadFile from "./lib/upload-file";
 import listFiles from "./lib/list-files";
 import * as deepmerge from "deepmerge";
-export default async function (request: any, template: any) {
-  validate(request, template);
+export default async function (request: any) {
   validate(request, _template);
 
-  const config = deepmerge.all([getConfig(template), getConfig(request)]);
+  const config = getConfig(request);
   const { body, id, intent } = request;
   const bucket: string = process.env[this.id];
 
