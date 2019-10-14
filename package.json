@@ -1,0 +1,25 @@
+{
+  "license": "ISC",
+  "main": "dist/index.js",
+  "name": "@tenex/cloud-drive",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node index",
+    "test": "tsc --watch > log & tx-test --path dist"
+  },
+  "version": "0.0.3",
+  "dependencies": {
+    "@tenex/schema-validate": "^1.2.1",
+    "@types/js-yaml": "^3.12.1",
+    "@types/node": "^12.7.10",
+    "aws-sdk": "^2.542.0",
+    "crypto": "^1.0.1",
+    "deepmerge": "^4.0.0",
+    "js-md5": "^0.7.3",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "@tenex/serverless-env": "0.0.1"
+  }
+}
