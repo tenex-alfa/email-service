@@ -10,9 +10,10 @@ const listFiles = (
 ): Promise<S3.ListObjectsOutput> => {
   if (!bucket) throw new Error("Not a valid bucket name");
 
+  console.log(getPath(config.folder, id))
   return new Promise((res: any, rej: any) => {
     s3.listObjects(
-      { Bucket: bucket, Prefix: getPath(id, config.folder) },
+      { Bucket: bucket, Prefix: getPath(config.folder, id) },
       (err: any, data: any) => {
         if (err) rej(err);
         if (data) res(data);

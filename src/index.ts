@@ -4,34 +4,33 @@ import getFile from "./lib/get-file";
 import uploadFile from "./lib/upload-file";
 import listFiles from "./lib/list-files";
 import * as deepmerge from "deepmerge";
+import getPath from "./lib/get-path"
 export default async function (request: any) {
   validate(request, _template);
 
-  const config = getConfig(request);
-  const { body, id, intent } = request;
+  const { id, intent, config, body } = request;
   const bucket: string = process.env[this.id];
+  let path = getPath("/", id);
+
+  if (config)
+    path = getPath(config.folder, id);
 
 
   let res;
   switch (intent) {
     case "put":
-      res = await uploadFile(bucket, id, config);
+      res = await uploadFile(bucket, path, config, body);
+      // console.log(res)
       return res;
 
     case "list":
-      res = await listFiles(bucket, id, config);
+      res = await listFiles(bucket, path, config);
       const content = res.Contents.map(v => v.Key);
       return content;
 
     case "get":
-      return await getFile(bucket, id, config);
+      return await getFile(bucket, path, config);
   }
 }
 
-function getConfig(object: any): any {
-  const { buffer, folder } = object;
-  const out: any = {};
-  if (buffer) out.buffer = buffer;
-  if (folder) out.folder = folder;
-  return out;
-}
+

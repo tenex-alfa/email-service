@@ -1,18 +1,20 @@
 import { S3 } from "aws-sdk";
 import getPath from "./get-path";
 
-const s3 = new S3();
+var s3 = new S3({
+  signatureVersion: 'v4'
+});
 
 const uploadFile = (
   bucket: string,
   id: string,
   config: any,
-  body?:any
+  body: any
 ) => {
   if (!bucket) throw new Error("Not a valid bucket name");
 
 
-  if (config.buffer)
+  if (config && config.buffer)
     return new Promise((res: any, rej: any) => {
       s3.upload(
         { Bucket: bucket, Body: body, Key: getPath(id, config.folder) },
@@ -23,7 +25,8 @@ const uploadFile = (
       );
     });
 
-  return s3.getSignedUrl("putObject", { Bucket: bucket, Key: id });
+  return s3.getSignedUrl("putObject", { Bucket: bucket, Key: id, Expires: 120 });
 };
 
 export default uploadFile;
+

@@ -15,10 +15,16 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${service}-${stage}-${name}
-    CorsConfiguration:
-      CorsRules:
-        - AllowedHeaders: ["*"]
-          AllowedMethods: [GET, PUT]
-          AllowedOrigins: ["*"]
-          Id: CORSRuleId1
-          MaxAge: "3600"
+        BucketEncryption:
+          ServerSideEncryptionConfiguration:
+            - ServerSideEncryptionByDefault:
+                SSEAlgorithm: AES256
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ["*"]
+              AllowedMethods: [GET, PUT]
+              AllowedOrigins: ["*"]
+              Id: CORSRuleId1
+              MaxAge: "3600"
+        VersioningConfiguration:
+          Status: Enabled

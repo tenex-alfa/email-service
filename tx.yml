@@ -1,3 +1,4 @@
+service: test-service3
 # Here we can declare which resource template
 # Should be used in diffent selected types
 types:
@@ -13,8 +14,11 @@ template:
   folder?: [String]
 
 mock:
-  name: myTestResource
+  service: my-test-service
+  name: myTestService2
   args:
-    - body: ""
+    - body: "test"
       intent: put
-      id: myId
+      id: "/test"
+      config:
+        buffer: false
