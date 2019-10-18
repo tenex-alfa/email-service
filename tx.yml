@@ -7,17 +7,11 @@ types:
 
 # Here we have the allowed templates to be inputted
 template:
-  body: String
-  title: String
-  to: String
-  from: String
-  attachment?: [String]
+  executable: String
+  input?: [{}]
 
 mock:
   service: my-test-service
   name: myTestService2
   args:
-    - body: Hello from an Lambda function
-      title: Hello from an body
-      from: erik.rehn98@gmail.com
-      to: erik.rehn98@gmail.com
+    - executable: ../sample.py

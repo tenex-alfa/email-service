@@ -9,6 +9,16 @@ provider:
         - s3:PutObject
       Resource: "arn:aws:s3:::${self:provider.environment.${name}}/*"
 
+functions:
+  ${name}-python:
+    handler: resource/python-executer/handler.handler
+    runtime: python3.7
+    events:
+      - http:
+          path: /py
+          method: post
+          cors: true
+
 resources:
   Resources:
     ${name}:
