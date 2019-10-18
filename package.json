@@ -3,11 +3,11 @@
   "main": "dist/index.js",
   "name": "@tenex/cloud-drive",
   "scripts": {
-    "build": "tsc",
+    "build": "node build && tsc",
     "start": "npm run build && node index",
     "test": "tsc --watch > log & tx-test --path dist"
   },
-  "version": "0.0.6",
+  "version": "1.0.0",
   "dependencies": {
     "@types/js-yaml": "^3.12.1",
     "@types/node": "^12.7.10",
@@ -19,6 +19,7 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@tenex/serverless-env": "^1.1.1",
     "@tenex/schema-validate": "^1.2.1"
   }
 }

@@ -1,4 +1,4 @@
-service: test-service3
+service: email-test
 # Here we can declare which resource template
 # Should be used in diffent selected types
 types:
@@ -7,18 +7,17 @@ types:
 
 # Here we have the allowed templates to be inputted
 template:
-  body?: String
-  intent: [put, get, list]
-  id: String
-  buffer?: [true, false]
-  folder?: [String]
+  body: String
+  title: String
+  to: String
+  from: String
+  attachment?: [String]
 
 mock:
   service: my-test-service
   name: myTestService2
   args:
-    - body: "test"
-      intent: put
-      id: "/test"
-      config:
-        buffer: false
+    - body: Hello from an Lambda function
+      title: Hello from an body
+      from: erik.rehn98@gmail.com
+      to: erik.rehn98@gmail.com
