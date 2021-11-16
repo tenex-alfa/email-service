@@ -11,7 +11,7 @@
   "dependencies": {
     "@types/js-yaml": "^3.12.1",
     "@types/node": "^12.7.10",
-    "aws-sdk": "^2.542.0",
+    "aws-sdk": "^2.814.0",
     "crypto": "^1.0.1",
     "deepmerge": "^4.0.0",
     "js-md5": "^0.7.3",
